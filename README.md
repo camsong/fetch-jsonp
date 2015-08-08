@@ -1,20 +1,20 @@
-# Fetch JSONP like a boss using Fetch API
+# Fetch JSONP [![Build Status](https://travis-ci.org/camsong/fetch-jsonp.svg)]
 
 JSONP is NOT supported in standard Fetch API, https://fetch.spec.whatwg.org.
 fetch-jsonp provides you same API to fetch JSONP like naive Fetch, also comes
 with global `fetchJsonp` function.
 
-If you need a `fetch` polyfill for legacy browsers, try [github/fetch](github.com/github/fetch).
+If you need a `fetch` polyfill for old browsers, try [github/fetch](github.com/github/fetch).
 
 ## Installation
 
 You can install with `npm`.
 
-You'll also need a Promise polyfill for [legacy browsers](http://caniuse.com/#feat=promises).
-
-```sh
-$ bower install es6-promise
 ```
+npm install fetch-jsonp
+```
+
+You'll also need a Promise polyfill for [old browsers](http://caniuse.com/#feat=promises).
 
 Also available on [Bower](http://bower.io) as **fetch-jsonp**
 
