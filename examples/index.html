@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fetch JSONP example</title>
+  <script src="../build/fetch-jsonp.js"></script>
+</head>
+<body>
+  <script>
+    var result = fetchJsonp('http://www.flickr.com/services/feeds/photos_public.gne?format=json', {
+      jsonpCallback: 'jsoncallback',
+      timeout: 3000
+    })
+    result.then(function(response) {
+      return response.json()
+    }).then(function(json) {
+      document.body.innerHTML = JSON.stringify(json);
+    })['catch'](function(ex) {
+      document.body.innerHTML = 'failed:' + ex;
+    })
+  </script>
+</body>
+</html>

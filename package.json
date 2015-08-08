@@ -1,0 +1,41 @@
+{
+  "name": "fetch-jsonp",
+  "version": "0.9.0",
+  "description": "Fetch JSONP like a boss using Fetch API",
+  "main": "build/fetch-jsonp.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel/register --recursive --ui bdd --reporter spec",
+    "build": "babel src/ --modules umd --out-dir build",
+    "clean": "rm -rf build",
+    "lint": "eslint src/ test/"
+  },
+  "keywords": [
+    "fetch",
+    "jsonp",
+    "github fetch",
+    "ajax"
+  ],
+  "dependencies": {
+    "es6-promise": "^2.3.0"
+	},
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "babel-core": "^5.8.21",
+    "babel-eslint": "^4.0.5",
+    "chai": "^3.2.0",
+    "eslint": "^1.1.0",
+    "eslint-config-airbnb": "^0.0.7",
+    "eslint-plugin-react": "^3.2.1",
+    "mocha": "^2.2.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camsong/fetch-jsonp.git"
+  },
+  "author": "Cam Song",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/camsong/fetch-jsonp/issues"
+  },
+  "homepage": "https://github.com/camsong/fetch-jsonp#readme"
+}

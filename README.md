@@ -1,0 +1,82 @@
+# Fetch JSONP like a boss using Fetch API
+
+JSONP is NOT supported in standard Fetch API, https://fetch.spec.whatwg.org.
+fetch-jsonp provides you same API to fetch JSONP like naive Fetch, also comes
+with global `fetchJsonp` function.
+
+If you need a `fetch` polyfill for legacy browsers, try [github/fetch](github.com/github/fetch).
+
+## Installation
+
+You can install with `npm`.
+
+You'll also need a Promise polyfill for [legacy browsers](http://caniuse.com/#feat=promises).
+
+```sh
+$ bower install es6-promise
+```
+
+Also available on [Bower](http://bower.io) as **fetch-jsonp**
+
+```sh
+$ bower install fetch-jsonp
+```
+
+## Usage
+
+The `fetch-jsonp` function supports any HTTP method. We'll focus on GET and POST
+example requests.
+
+### Fetch JSONP in simple way
+
+```javascript
+fetchJsonp('/users.jsonp')
+  .then(function(response) {
+    return response.json()
+  }).then(function(json) {
+    console.log('parsed json', json)
+  }).catch(function(ex) {
+    console.log('parsing failed', ex)
+  })
+```
+
+### Set JSONP callback name, default is 'callback'
+
+```javascript
+fetchJsonp('/users.jsonp', {
+    jsonpCallback: 'custom_callback'
+  })
+  .then(function(response) {
+    return response.json()
+  }).then(function(json) {
+    console.log('parsed json', json)
+  }).catch(function(ex) {
+    console.log('parsing failed', ex)
+  })
+```
+
+### Set JSONP request timeout, default is 5000ms
+
+```javascript
+fetchJsonp('/users.jsonp', {
+    jsonpCallback: 'custom_callback'
+  })
+  .then(function(response) {
+    return response.json()
+  }).then(function(json) {
+    console.log('parsed json', json)
+  }).catch(function(ex) {
+    console.log('parsing failed', ex)
+  })
+```
+
+### Caveats
+
+You need to call `.then(function(respons) { return respons.json(); })` in order
+to keep consistent with Fetch API.
+
+## Browser Support
+
+![Chrome](https://raw.github.com/alrra/browser-logos/master/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/firefox/firefox_48x48.png) | ![IE](https://raw.github.com/alrra/browser-logos/master/internet-explorer/internet-explorer_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/opera/opera_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/safari/safari_48x48.png)
+--- | --- | --- | --- | --- |
+Latest ✔ | Latest ✔ | 9+ ✔ | Latest ✔ | 6.1+ ✔ |
