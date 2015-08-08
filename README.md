@@ -1,4 +1,4 @@
-# Fetch JSONP [![Build Status](https://travis-ci.org/camsong/fetch-jsonp.svg)]
+# Fetch JSONP [![Build Status](https://travis-ci.org/camsong/fetch-jsonp.svg)](https://travis-ci.org/camsong/fetch-jsonp) [![npm version](https://badge.fury.io/js/fetch-jsonp.svg)](http://badge.fury.io/js/fetch-jsonp)
 
 JSONP is NOT supported in standard Fetch API, https://fetch.spec.whatwg.org.
 fetch-jsonp provides you same API to fetch JSONP like naive Fetch, also comes
@@ -15,6 +15,10 @@ npm install fetch-jsonp
 ```
 
 You'll also need a Promise polyfill for [old browsers](http://caniuse.com/#feat=promises).
+
+```
+npm install es6-promise
+```
 
 Also available on [Bower](http://bower.io) as **fetch-jsonp**
 
@@ -80,3 +84,11 @@ to keep consistent with Fetch API.
 ![Chrome](https://raw.github.com/alrra/browser-logos/master/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/firefox/firefox_48x48.png) | ![IE](https://raw.github.com/alrra/browser-logos/master/internet-explorer/internet-explorer_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/opera/opera_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
 Latest ✔ | Latest ✔ | 9+ ✔ | Latest ✔ | 6.1+ ✔ |
+
+# License
+
+MIT
+
+# Acknowledgement
+
+Thanks to [github/fetch](https://github.com/github/fetch) for bring Fetch to old browsers.
