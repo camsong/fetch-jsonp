@@ -66,6 +66,7 @@ const fetchJsonp = function(url, options = {}) {
 };
 
 // export as global function
+/*
 let local;
 if (typeof global !== 'undefined') {
   local = global;
@@ -80,5 +81,6 @@ if (typeof global !== 'undefined') {
 }
 
 local.fetchJsonp = fetchJsonp;
+*/
 
 export default fetchJsonp;
