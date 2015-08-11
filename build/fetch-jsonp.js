@@ -35,7 +35,7 @@
 
   function removeScript(scriptId) {
     var script = document.getElementById(scriptId);
-    document.head.removeChild(script);
+    document.getElementsByTagName("head")[0].removeChild(script);
   }
 
   var fetchJsonp = function fetchJsonp(url) {

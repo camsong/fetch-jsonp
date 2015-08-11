@@ -20,7 +20,7 @@ function clearFunction(functionName) {
 
 function removeScript(scriptId) {
   const script = document.getElementById(scriptId);
-  document.head.removeChild(script);
+  document.getElementsByTagName("head")[0].removeChild(script);
 }
 
 const fetchJsonp = function(url, options = {}) {
