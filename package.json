@@ -1,6 +1,6 @@
 {
   "name": "fetch-jsonp",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "Fetch JSONP like a boss using Fetch API",
   "main": "build/fetch-jsonp.js",
   "scripts": {

@@ -83,7 +83,8 @@
   };
 
   // export as global function
-  var local = undefined;
+  /*
+  let local;
   if (typeof global !== 'undefined') {
     local = global;
   } else if (typeof self !== 'undefined') {
@@ -95,8 +96,9 @@
       throw new Error('polyfill failed because global object is unavailable in this environment');
     }
   }
-
+  
   local.fetchJsonp = fetchJsonp;
+  */
 
   module.exports = fetchJsonp;
 });
