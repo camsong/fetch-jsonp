@@ -4,7 +4,7 @@ JSONP is NOT supported in standard Fetch API, https://fetch.spec.whatwg.org.
 fetch-jsonp provides you same API to fetch JSONP like naive Fetch, also comes
 with global `fetchJsonp` function.
 
-If you need a `fetch` polyfill for old browsers, try [github/fetch](github.com/github/fetch).
+If you need a `fetch` polyfill for old browsers, try [github/fetch](http://github.com/github/fetch).
 
 ## Installation
 
