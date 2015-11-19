@@ -15,7 +15,8 @@
 
   var defaultOptions = {
     timeout: 5000,
-    jsonpCallback: 'callback'
+    jsonpCallback: 'callback',
+    jsonpCallbackFunction: null
   };
 
   function generateCallbackFunction() {
@@ -35,11 +36,11 @@
 
   function removeScript(scriptId) {
     var script = document.getElementById(scriptId);
-    document.getElementsByTagName("head")[0].removeChild(script);
+    document.getElementsByTagName('head')[0].removeChild(script);
   }
 
   var fetchJsonp = function fetchJsonp(url) {
-    var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+    var options = arguments[1] === undefined ? {} : arguments[1];
 
     var timeout = options.timeout != null ? options.timeout : defaultOptions.timeout;
     var jsonpCallback = options.jsonpCallback != null ? options.jsonpCallback : defaultOptions.jsonpCallback;
@@ -47,7 +48,7 @@
     var timeoutId = undefined;
 
     return new Promise(function (resolve, reject) {
-      var callbackFunction = generateCallbackFunction();
+      var callbackFunction = options.jsonpCallbackFunction || generateCallbackFunction();
 
       window[callbackFunction] = function (response) {
         resolve({
@@ -69,9 +70,9 @@
       url += url.indexOf('?') === -1 ? '?' : '&';
 
       var jsonpScript = document.createElement('script');
-      jsonpScript.setAttribute("src", url + jsonpCallback + '=' + callbackFunction);
+      jsonpScript.setAttribute('src', url + jsonpCallback + '=' + callbackFunction);
       jsonpScript.id = jsonpCallback + '_' + callbackFunction;
-      document.getElementsByTagName("head")[0].appendChild(jsonpScript);
+      document.getElementsByTagName('head')[0].appendChild(jsonpScript);
 
       timeoutId = setTimeout(function () {
         reject(new Error('JSONP request to ' + url + ' timed out'));
