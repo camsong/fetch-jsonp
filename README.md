@@ -20,12 +20,6 @@ You'll also need a Promise polyfill for [old browsers](http://caniuse.com/#feat=
 npm install es6-promise
 ```
 
-Also available on [Bower](http://bower.io) as **fetch-jsonp**
-
-```sh
-$ bower install fetch-jsonp
-```
-
 ## Usage
 
 The `fetch-jsonp` function supports any HTTP method. We'll focus on GET and POST

@@ -10,18 +10,15 @@ minor version "1.x.x" bump is in order.
 
 To prepare the release commit:
 
-1. Edit the [bower.json](https://github.com/camsong/fetch-jsonp/blob/master/bower.json)
-`version` value.
-2. Change the npm [package.json](https://github.com/camsong/fetch-jsonp/blob/master/package.json)
+1. Change the npm [package.json](https://github.com/camsong/fetch-jsonp/blob/master/package.json)
 `version` value to match.
-3. Make a single commit with the description as "Fetch JSONP 1.x.x".
-4. Finally, tag the commit with `v1.x.x`.
+2. Make a single commit with the description as "Fetch JSONP 1.x.x".
+3. Finally, tag the commit with `v1.x.x`.
 
 ```
 $ git pull
-$ vim bower.json
 $ vim package.json
-$ git add bower.json package.json
+$ git add package.json
 $ git commit -m "Fetch JSONP 1.x.x"
 $ git tag v1.x.x
 $ git push
