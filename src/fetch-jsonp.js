@@ -1,6 +1,7 @@
 const defaultOptions = {
   timeout: 5000,
-  jsonpCallback: 'callback'
+  jsonpCallback: 'callback',
+  jsonpCallbackFunction: null,
 };
 
 function generateCallbackFunction() {
@@ -30,7 +31,7 @@ const fetchJsonp = function(url, options = {}) {
   let timeoutId;
 
   return new Promise((resolve, reject) => {
-    const callbackFunction = generateCallbackFunction();
+    let callbackFunction = options.jsonpCallbackFunction || generateCallbackFunction();
 
     window[callbackFunction] = function(response) {
       resolve({
