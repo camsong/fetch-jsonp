@@ -71,7 +71,7 @@ fetchJsonp('/users.jsonp', {
 
 ### Caveats
 
-You need to call `.then(function(respons) { return respons.json(); })` in order
+You need to call `.then(function(response) { return response.json(); })` in order
 to keep consistent with Fetch API.
 
 ## Browser Support
