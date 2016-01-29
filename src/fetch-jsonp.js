@@ -28,12 +28,16 @@ const fetchJsonp = function(url, options = {}) {
   const timeout = options.timeout != null ? options.timeout : defaultOptions.timeout;
   const jsonpCallback = options.jsonpCallback != null ? options.jsonpCallback : defaultOptions.jsonpCallback;
 
-  let timeoutId;
+  //Do not use the same timeoutid
+  //let timeoutId;
 
   return new Promise((resolve, reject) => {
     let callbackFunction = options.jsonpCallbackFunction || generateCallbackFunction();
 
     window[callbackFunction] = function(response) {
+      //Generate different "timeoutid"
+      let timeoutid = jsonpCallback + '_' + callbackFunction + '_' + 'timeoutId';
+
       resolve({
         ok: true,
         // keep consistent with fetch API
@@ -57,7 +61,9 @@ const fetchJsonp = function(url, options = {}) {
     jsonpScript.id = jsonpCallback + '_' + callbackFunction;
     document.getElementsByTagName("head")[0].appendChild(jsonpScript);
 
-    timeoutId = setTimeout(() => {
+    //Generate different "timeoutid"
+    //That is not because of the asynchronous lead, the entire "timeout" chaos
+    window[jsonpCallback + '_' + callbackFunction + '_' + 'timeoutId'] = setTimeout(() => {
       reject(new Error(`JSONP request to ${url} timed out`));
 
       clearFunction(callbackFunction);
