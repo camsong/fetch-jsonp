@@ -74,9 +74,7 @@ const fetchJsonp = function(url, options = {}) {
       //Delay will affect the result but does not affect your overall request
       // status, which is considered a failure by more than your delay time.
       if (/loaded|complete/.test(this.readyState)) {
-        if (window[callbackFunction]) {
-          hasError = true;
-        }
+        hasError = !!window[callbackFunction];
       }
 
       if (hasError || err) {
