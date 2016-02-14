@@ -24,6 +24,7 @@ npm install es6-promise
 
 The `fetch-jsonp` function supports any HTTP method. We'll focus on GET and POST
 example requests.
+Not need timeout check error;Check the error by "onerror" and "onreadystatechange";
 
 ### Fetch JSONP in simple way
 
@@ -53,7 +54,9 @@ fetchJsonp('/users.jsonp', {
   })
 ```
 
-### Set JSONP request timeout, default is 5000ms
+### Set JSONP request timeout, default is 0
+
+timeout Not equal 0,use timeout
 
 ```javascript
 fetchJsonp('/users.jsonp', {
@@ -79,6 +82,9 @@ to keep consistent with Fetch API.
 ![Chrome](https://raw.github.com/alrra/browser-logos/master/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/firefox/firefox_48x48.png) | ![IE](https://raw.github.com/alrra/browser-logos/master/internet-explorer/internet-explorer_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/opera/opera_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
 Latest ✔ | Latest ✔ | 8+ ✔ | Latest ✔ | 6.1+ ✔ |
+
+## Support Promise
+[promise](https://github.com/then/promise) This is a simple implementation of Promises.
 
 # License
 
