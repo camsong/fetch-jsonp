@@ -65,7 +65,7 @@ const fetchJsonp = function(url, options = {}) {
     jsonpScript.id = jsonpCallback + '_' + callbackFunction;
 
     // Attach handlers for all browsers
-    jsonpScript.onerror = jsonpScript.onreadystatechange = function(err) {
+    jsonpScript.onload = jsonpScript.onreadystatechange = function(err) {
       var hasError = false;
       //IE8 Unable to determine the load failed.
       //But the execution is faster than the this.readyState change.
