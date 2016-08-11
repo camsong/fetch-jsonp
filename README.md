@@ -14,12 +14,6 @@ You can install with `npm`.
 npm install fetch-jsonp
 ```
 
-You'll also need a Promise polyfill for [old browsers](http://caniuse.com/#feat=promises).
-
-```
-npm install es6-promise
-```
-
 ## Usage
 
 The `fetch-jsonp` function supports any HTTP method. We'll focus on GET and POST
