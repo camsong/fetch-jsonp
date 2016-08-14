@@ -8,43 +8,45 @@ function generateCallbackFunction() {
   return `jsonp_${Date.now()}_${Math.ceil(Math.random() * 100000)}`;
 }
 
-// Known issue: Will throw 'Uncaught ReferenceError: callback_*** is not defined' error if request timeout
+// Known issue: Will throw 'Uncaught ReferenceError: callback_*** is not defined'
+// error if request timeout
 function clearFunction(functionName) {
   // IE8 throws an exception when you try to delete a property on window
   // http://stackoverflow.com/a/1824228/751089
   try {
     delete window[functionName];
-  } catch(e) {
+  } catch (e) {
     window[functionName] = undefined;
   }
 }
 
 function removeScript(scriptId) {
   const script = document.getElementById(scriptId);
-  document.getElementsByTagName("head")[0].removeChild(script);
+  document.getElementsByTagName('head')[0].removeChild(script);
 }
 
-const fetchJsonp = function(url, options = {}) {
-  const timeout = options.timeout != null ? options.timeout : defaultOptions.timeout;
-  const jsonpCallback = options.jsonpCallback != null ? options.jsonpCallback : defaultOptions.jsonpCallback;
+function fetchJsonp(_url, options = {}) {
+  // to avoid param reassign
+  let url = _url;
+  const timeout = options.timeout || defaultOptions.timeout;
+  const jsonpCallback = options.jsonpCallback || defaultOptions.jsonpCallback;
 
   let timeoutId;
 
   return new Promise((resolve, reject) => {
-    let callbackFunction = options.jsonpCallbackFunction || generateCallbackFunction();
+    const callbackFunction = options.jsonpCallbackFunction || generateCallbackFunction();
+    const scriptId = `${jsonpCallback}_${callbackFunction}`;
 
-    window[callbackFunction] = function(response) {
+    window[callbackFunction] = (response) => {
       resolve({
         ok: true,
         // keep consistent with fetch API
-        json: function() {
-          return Promise.resolve(response);
-        }
+        json: () => Promise.resolve(response),
       });
 
       if (timeoutId) clearTimeout(timeoutId);
 
-      removeScript(jsonpCallback + '_' + callbackFunction);
+      removeScript(scriptId);
 
       clearFunction(callbackFunction);
     };
@@ -53,18 +55,18 @@ const fetchJsonp = function(url, options = {}) {
     url += (url.indexOf('?') === -1) ? '?' : '&';
 
     const jsonpScript = document.createElement('script');
-    jsonpScript.setAttribute("src", url + jsonpCallback + '=' + callbackFunction);
-    jsonpScript.id = jsonpCallback + '_' + callbackFunction;
-    document.getElementsByTagName("head")[0].appendChild(jsonpScript);
+    jsonpScript.setAttribute('src', `${url}${jsonpCallback}=${callbackFunction}`);
+    jsonpScript.id = scriptId;
+    document.getElementsByTagName('head')[0].appendChild(jsonpScript);
 
     timeoutId = setTimeout(() => {
       reject(new Error(`JSONP request to ${url} timed out`));
 
       clearFunction(callbackFunction);
-      removeScript(jsonpCallback + '_' + callbackFunction);
+      removeScript(scriptId);
     }, timeout);
   });
-};
+}
 
 // export as global function
 /*
@@ -80,7 +82,6 @@ if (typeof global !== 'undefined') {
     throw new Error('polyfill failed because global object is unavailable in this environment');
   }
 }
-
 local.fetchJsonp = fetchJsonp;
 */
 
