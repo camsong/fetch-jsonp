@@ -81,7 +81,3 @@ MIT
 # Acknowledgement
 
 Thanks to [github/fetch](https://github.com/github/fetch) for bring Fetch to old browsers.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/camsong/fetch-jsonp/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-

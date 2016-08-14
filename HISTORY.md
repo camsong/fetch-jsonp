@@ -1,3 +1,8 @@
+1.0.1 / 2016-08-14
+==================
+* Format code
+* Update Readme
+
 1.0.0 / 2015-11-19
 ==================
 * Remove Bower support
