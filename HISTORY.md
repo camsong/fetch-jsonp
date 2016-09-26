@@ -1,3 +1,7 @@
+1.0.2 / 2016-09-26
+==================
+* Use original url when Request error
+
 1.0.1 / 2016-08-14
 ==================
 * Format code
