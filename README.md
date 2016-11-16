@@ -1,4 +1,4 @@
-# Fetch JSONP [![Build Status](https://travis-ci.org/camsong/fetch-jsonp.svg)](https://travis-ci.org/camsong/fetch-jsonp) [![npm version](https://badge.fury.io/js/fetch-jsonp.svg)](http://badge.fury.io/js/fetch-jsonp)
+# Fetch JSONP [![Build Status](https://travis-ci.org/camsong/fetch-jsonp.svg)](https://travis-ci.org/camsong/fetch-jsonp) [![npm version](https://badge.fury.io/js/fetch-jsonp.svg)](http://badge.fury.io/js/fetch-jsonp) [![npm downloads](https://img.shields.io/npm/dm/fetch-jsonp.svg?style=flat-square)](https://www.npmjs.com/package/fetch-jsonp)
 
 JSONP is NOT supported in standard Fetch API, https://fetch.spec.whatwg.org.
 fetch-jsonp provides you same API to fetch JSONP like naive Fetch, also comes
