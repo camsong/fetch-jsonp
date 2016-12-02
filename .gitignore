@@ -3,7 +3,6 @@ node_modules
 *.pid
 *.seed
 .DS_Store
-lib
 coverage
 logs
 pids

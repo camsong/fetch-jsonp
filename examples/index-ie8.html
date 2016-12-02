@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <title>Fetch JSONP example</title>
-  <script src="../dist/fetch-jsonp.js"></script>
+  <script src="../dist/fetch-jsonp-ie8.js?v=123123"></script>
 </head>
 <body>
   <script>
     var result = fetchJsonp('https://api.ipify.org/?format=jsonp', {
       jsonpCallback: 'callback',
-      timeout: 3000
+      timeout: 10000
     })
     result.then(function(response) {
       return response.json()
