@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fetch JSONP example</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.auto.min.js" charset="utf-8"></script>
+  <script src="../build/fetch-jsonp.js"></script>
+</head>
+<body>
+  <script>
+    var result = fetchJsonp('https://api.ipify.org/?format=jsonp', {
+      jsonpCallback: 'callback',
+      timeout: 10000
+    })
+    result.then(function(response) {
+      return response.json()
+    }).then(function(json) {
+      document.body.innerHTML = JSON.stringify(json);
+    })['catch'](function(ex) {
+      document.body.innerHTML = 'failed:' + ex;
+    })
+  </script>
+</body>
+</html>
