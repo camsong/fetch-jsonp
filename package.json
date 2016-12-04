@@ -15,9 +15,6 @@
     "github fetch",
     "ajax"
   ],
-  "dependencies": {
-    "es6-promise": "^2.3.0"
-  },
   "devDependencies": {
     "babel": "^5.8.21",
     "babel-core": "^5.8.21",
