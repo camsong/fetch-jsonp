@@ -79,7 +79,7 @@
       document.getElementsByTagName('head')[0].appendChild(jsonpScript);
 
       timeoutId = setTimeout(function () {
-        reject(new Error('JSONP request to ' + url + ' timed out'));
+        reject(new Error('JSONP request to ' + _url + ' timed out'));
 
         clearFunction(callbackFunction);
         removeScript(scriptId);

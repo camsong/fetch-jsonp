@@ -1,3 +1,8 @@
+1.0.3 / 2016-12-04
+==================
+* add examples index-ie8.html
+* remove `es6-promise` dependent
+
 1.0.2 / 2016-09-26
 ==================
 * Use original url when Request error
