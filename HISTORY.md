@@ -1,3 +1,7 @@
+1.0.4 / 2016-12-23
+==================
+* add typescript support
+
 1.0.3 / 2016-12-04
 ==================
 * add examples index-ie8.html
