@@ -1,3 +1,7 @@
+1.0.5 / 2016-12-29
+==================
+* update typescript support
+
 1.0.4 / 2016-12-23
 ==================
 * add typescript support
