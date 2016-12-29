@@ -1,9 +1,17 @@
-export interface FetchJsonpOptions {
-  timeout?: number;
-  jsonpCallback?: string;
-  callbackFunction?: string;
+declare function fetchJsonp(url: string, options?: fetchJsonp.Options): Promise<fetchJsonp.Response>;
+
+declare namespace fetchJsonp {
+  interface Options {
+    timeout?: number;
+    jsonpCallback?: string;
+    callbackFunction?: string;
+  }
+
+  interface Response {
+    json(): Promise<any>;
+    json<T>(): Promise<T>;
+    ok: boolean;
+  }
 }
 
-declare function fetchJsonp(url:string, options?:FetchJsonpOptions):Function;
-
-export default fetchJsonp;
+export = fetchJsonp;
