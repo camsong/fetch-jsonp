@@ -4,7 +4,7 @@ declare namespace fetchJsonp {
   interface Options {
     timeout?: number;
     jsonpCallback?: string;
-    callbackFunction?: string;
+    jsonpCallbackFunction?: string;
   }
 
   interface Response {
