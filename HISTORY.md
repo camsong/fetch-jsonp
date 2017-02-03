@@ -1,3 +1,7 @@
+1.0.6 / 2017-2-3
+==================
+* update typescript config
+
 1.0.5 / 2016-12-29
 ==================
 * update typescript support
