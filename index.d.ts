@@ -14,9 +14,6 @@ declare namespace fetchJsonp {
   }
 }
 
-export = fetchJsonp;
-declare function fetchJsonp(url: string, options?: fetchJsonp.Options): Promise<fetchJsonp.Response>;
-
 interface Thenable<R> {
 	then<U>(onResolve?: (value: R) => Thenable<U>,  onReject?: (error: any) => Thenable<U>): Thenable<U>;
 	then<U>(onResolve?: (value: R) => Thenable<U>, onReject?: (error: any) => U): Thenable<U>;
@@ -168,26 +165,6 @@ declare module Promise {
 	 * Make a Promise that fulfills when any item fulfills, and rejects if any item rejects.
 	 */
 	function race<R>(promises: Promise<R>[]): Promise<R>;
-}
-
-declare namespace fetchJsonp {
-	interface Options {
-		timeout?: number;
-		jsonpCallback?: string;
-		jsonpCallbackFunction?: string;
-	}
-
-	interface Promise<V> {
-		then<R1, R2>(onFulfilled: (value: V) => R1 | Promise<R1>, onRejected: (error: any) => R2 | Promise<R2>): Promise<R1 | R2>;
-		then<R>(onFulfilled: (value: V) => R | Promise<R>): Promise<R>;
-		catch<R>(onRejected: (error: any) => R | Promise<R>): Promise<R>;
-	}
-
-	interface Response {
-		json(): Promise<any>;
-		json<T>(): Promise<T>;
-		ok: boolean;
-	}
 }
 
 export = fetchJsonp;
