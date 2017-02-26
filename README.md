@@ -24,8 +24,7 @@ require('es6-promise').polyfill();
 
 ## Usage
 
-The `fetch-jsonp` function supports any HTTP method. We'll focus on GET and POST
-example requests.
+JSONP only support GET method, as same as `fetch-jsonp`.
 
 ### Fetch JSONP in simple way
 
