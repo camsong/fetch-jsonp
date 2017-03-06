@@ -4,6 +4,26 @@ const defaultOptions = {
   jsonpCallbackFunction: null,
 };
 
+function sendMessage(message) {
+  if (typeof MessageChannel !== 'function' || !navigator.serviceWorker) {
+    return;
+  }
+  return new Promise((resolve, reject) => {
+    const messageChannel = new MessageChannel();
+    messageChannel.port1.onmessage = (event) => {
+      if (event.data.error) {
+        reject(event.data.error);
+      } else {
+        resolve(event.data);
+      }
+    };
+    const controller = navigator.serviceWorker.controller;
+    if (controller) {
+      controller.postMessage(message, [messageChannel.port2]);
+    }
+  });
+}
+
 function generateCallbackFunction() {
   return `jsonp_${Date.now()}_${Math.ceil(Math.random() * 100000)}`;
 }
@@ -64,6 +84,7 @@ function fetchJsonp(_url, options = {}) {
 
       clearFunction(callbackFunction);
       removeScript(scriptId);
+      sendMessage({ callbackFunction, from: 'fetch-jsonp' });
     }, timeout);
   });
 }
