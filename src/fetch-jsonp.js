@@ -56,6 +56,9 @@ function fetchJsonp(_url, options = {}) {
 
     const jsonpScript = document.createElement('script');
     jsonpScript.setAttribute('src', `${url}${jsonpCallback}=${callbackFunction}`);
+    if (options.charset) {
+      jsonpScript.setAttribute('charset', options.charset);
+    }
     jsonpScript.id = scriptId;
     document.getElementsByTagName('head')[0].appendChild(jsonpScript);
 
