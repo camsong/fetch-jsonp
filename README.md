@@ -43,7 +43,8 @@ fetchJsonp('/users.jsonp')
 
 ```javascript
 fetchJsonp('/users.jsonp', {
-    jsonpCallback: 'custom_callback'
+    jsonpCallback: 'custom_callback',
+    jsonpCallbackFunction: '<name of your callback function>'
   })
   .then(function(response) {
     return response.json()
@@ -59,7 +60,8 @@ fetchJsonp('/users.jsonp', {
 ```javascript
 fetchJsonp('/users.jsonp', {
     timeout: 3000,
-    jsonpCallback: 'custom_callback'
+    jsonpCallback: 'custom_callback',
+    jsonpCallbackFunction: '<name of your callback function>'
   })
   .then(function(response) {
     return response.json()
