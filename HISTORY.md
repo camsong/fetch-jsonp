@@ -1,3 +1,8 @@
+1.0.7 / 2017-5-25
+==================
+* support custom charset on script
+* fix docs: properly document how to use jsonCallback and jsonpCallbackFunction options
+
 1.0.6 / 2017-2-3
 ==================
 * update typescript config
