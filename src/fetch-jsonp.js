@@ -60,6 +60,12 @@ function fetchJsonp(_url, options = {}) {
       jsonpScript.setAttribute('charset', options.charset);
     }
     jsonpScript.id = scriptId;
+    jsonpScript.onerror = () => {
+      reject(new Error(`JSONP request to ${_url} failed`));
+
+      clearFunction(callbackFunction);
+      removeScript(scriptId);
+    }
     document.getElementsByTagName('head')[0].appendChild(jsonpScript);
 
     timeoutId = setTimeout(() => {
