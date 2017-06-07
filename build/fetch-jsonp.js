@@ -79,6 +79,12 @@
         jsonpScript.setAttribute('charset', options.charset);
       }
       jsonpScript.id = scriptId;
+      jsonpScript.onerror = function () {
+        reject(new Error('JSONP request to ' + _url + ' failed'));
+
+        clearFunction(callbackFunction);
+        removeScript(scriptId);
+      };
       document.getElementsByTagName('head')[0].appendChild(jsonpScript);
 
       timeoutId = setTimeout(function () {

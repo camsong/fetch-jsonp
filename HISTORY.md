@@ -1,3 +1,7 @@
+1.1.0 / 2017-6-7
+==================
+* Handle <script> error event, thanks to @michaelvial
+
 1.0.7 / 2017-5-25
 ==================
 * support custom charset on script
