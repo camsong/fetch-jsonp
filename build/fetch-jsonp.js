@@ -23,8 +23,6 @@
     return 'jsonp_' + Date.now() + '_' + Math.ceil(Math.random() * 100000);
   }
 
-  // Known issue: Will throw 'Uncaught ReferenceError: callback_*** is not defined'
-  // error if request timeout
   function clearFunction(functionName) {
     // IE8 throws an exception when you try to delete a property on window
     // http://stackoverflow.com/a/1824228/751089
@@ -37,7 +35,9 @@
 
   function removeScript(scriptId) {
     var script = document.getElementById(scriptId);
-    document.getElementsByTagName('head')[0].removeChild(script);
+    if (script) {
+      document.getElementsByTagName('head')[0].removeChild(script);
+    }
   }
 
   function fetchJsonp(_url) {
@@ -79,12 +79,6 @@
         jsonpScript.setAttribute('charset', options.charset);
       }
       jsonpScript.id = scriptId;
-      jsonpScript.onerror = function () {
-        reject(new Error('JSONP request to ' + _url + ' failed'));
-
-        clearFunction(callbackFunction);
-        removeScript(scriptId);
-      };
       document.getElementsByTagName('head')[0].appendChild(jsonpScript);
 
       timeoutId = setTimeout(function () {
@@ -93,6 +87,15 @@
         clearFunction(callbackFunction);
         removeScript(scriptId);
       }, timeout);
+
+      // Caught if got 404/500
+      jsonpScript.onerror = function () {
+        reject(new Error('JSONP request to ' + _url + ' failed'));
+
+        clearFunction(callbackFunction);
+        removeScript(scriptId);
+        if (timeoutId) clearTimeout(timeoutId);
+      };
     });
   }
 

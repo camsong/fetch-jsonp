@@ -1,9 +1,10 @@
 {
   "name": "fetch-jsonp",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Fetch JSONP like a boss using Fetch API",
   "main": "build/fetch-jsonp.js",
   "scripts": {
+    "prepublish": "npm run lint && npm run clean && npm run build",
     "test": "mocha --compilers js:babel/register --recursive --ui bdd --reporter spec",
     "build": "babel src/ --modules umd --out-dir build",
     "clean": "rm -rf build",

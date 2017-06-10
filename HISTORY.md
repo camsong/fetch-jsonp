@@ -1,3 +1,7 @@
+1.1.1 / 2017-6-10
+==================
+* Fix script error when script request error, thanks to @wheatma
+
 1.1.0 / 2017-6-7
 ==================
 * Handle <script> error event, thanks to @michaelvial
