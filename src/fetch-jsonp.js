@@ -22,7 +22,9 @@ function clearFunction(functionName) {
 
 function removeScript(scriptId) {
   const script = document.getElementById(scriptId);
-  document.getElementsByTagName('head')[0].removeChild(script);
+  if (script) {
+    document.getElementsByTagName('head')[0].removeChild(script);
+  }
 }
 
 function fetchJsonp(_url, options = {}) {
