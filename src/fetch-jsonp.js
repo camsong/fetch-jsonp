@@ -8,8 +8,6 @@ function generateCallbackFunction() {
   return `jsonp_${Date.now()}_${Math.ceil(Math.random() * 100000)}`;
 }
 
-// Known issue: Will throw 'Uncaught ReferenceError: callback_*** is not defined'
-// error if request timeout
 function clearFunction(functionName) {
   // IE8 throws an exception when you try to delete a property on window
   // http://stackoverflow.com/a/1824228/751089
@@ -62,12 +60,6 @@ function fetchJsonp(_url, options = {}) {
       jsonpScript.setAttribute('charset', options.charset);
     }
     jsonpScript.id = scriptId;
-    jsonpScript.onerror = () => {
-      reject(new Error(`JSONP request to ${_url} failed`));
-
-      clearFunction(callbackFunction);
-      removeScript(scriptId);
-    }
     document.getElementsByTagName('head')[0].appendChild(jsonpScript);
 
     timeoutId = setTimeout(() => {
@@ -76,6 +68,15 @@ function fetchJsonp(_url, options = {}) {
       clearFunction(callbackFunction);
       removeScript(scriptId);
     }, timeout);
+
+    // Caught if got 404/500
+    jsonpScript.onerror = () => {
+      reject(new Error(`JSONP request to ${_url} failed`));
+
+      clearFunction(callbackFunction);
+      removeScript(scriptId);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   });
 }
 
