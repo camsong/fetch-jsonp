@@ -119,8 +119,11 @@ search_results(
 
 ### Caveats
 
-You need to call `.then(function(response) { return response.json(); })` in order
-to keep consistent with Fetch API.
+#### 1. You need to call `.then(function(response) { return response.json(); })` in order to keep consistent with Fetch API.
+
+#### 2. `Uncaught SyntaxError: Unexpected token :` error
+
+Most probably your are calling a JSON api, which does not support JSONP. The difference is that JSON api respond with an object like `{"data": 123}`, will get above error when being executed as a function. While JSONP will respond with a function wrapped object like `jsonp_123132({data: 123})`.
 
 ## Browser Support
 
