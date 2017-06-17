@@ -39,12 +39,26 @@ fetchJsonp('/users.jsonp')
   })
 ```
 
-### Set JSONP callback name, default is 'callback'
+### Set JSONP callback parameter name, default is 'callback'
 
 ```javascript
 fetchJsonp('/users.jsonp', {
     jsonpCallback: 'custom_callback',
-    jsonpCallbackFunction: '<name of your callback function>'
+  })
+  .then(function(response) {
+    return response.json()
+  }).then(function(json) {
+    console.log('parsed json', json)
+  }).catch(function(ex) {
+    console.log('parsing failed', ex)
+  })
+```
+
+### Set JSONP callback function name, default is a random number with `json_` prefix
+
+```javascript
+fetchJsonp('/users.jsonp', {
+    jsonpCallbackFunction: 'function_name_of_jsonp_response'
   })
   .then(function(response) {
     return response.json()
@@ -60,8 +74,6 @@ fetchJsonp('/users.jsonp', {
 ```javascript
 fetchJsonp('/users.jsonp', {
     timeout: 3000,
-    jsonpCallback: 'custom_callback',
-    jsonpCallbackFunction: '<name of your callback function>'
   })
   .then(function(response) {
     return response.json()
@@ -70,6 +82,39 @@ fetchJsonp('/users.jsonp', {
   }).catch(function(ex) {
     console.log('parsing failed', ex)
   })
+```
+
+### Difference between `jsonpCallback` and `jsonCallbackFunction`
+There two functions can easily be confused with each other, but there is a clear distinction.
+
+default value are
+* `jsonpCallback`, default value is `callback`. It's the name of callback parameter
+* `jsonCallbackFunction`, default value is `null`. It's the name of the callback function. In order to make it distinct, it's a random string with `jsonp_` prefix like `jsonp_1497658186785_39551`. Leave it blank if it's set be the server, set it explicitly if the callback function name is fixed.
+
+##### Case 1:
+```js
+fetchJsonp('/users.jsonp', {
+  jsonpCallback: 'cb'
+})
+```
+The request url will be `/users.jsonp?cb=jsonp_1497658186785_39551`, and the server should respond with a function like:
+```js
+jsonp_1497658186785_39551(
+  { ...data here... }
+)
+```
+
+##### Case 2:
+```js
+fetchJsonp('/users.jsonp', {
+  jsonpCallbackFunction: 'search_results'
+})
+```
+The request url will be `/users.jsonp?callback=search_results`, and the server should always respond with a function named `search_results` like:
+```js
+search_results(
+  { ...data here... }
+)
 ```
 
 ### Caveats

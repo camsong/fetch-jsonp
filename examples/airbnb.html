@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fetch Airbnb JSONP example</title>
+  <script src="../build/fetch-jsonp.js"></script>
+</head>
+<body>
+  <script>
+    var result = fetchJsonp('http://assets.airbnb.com/frontend/search_results.js', {
+      jsonpCallback: 'aaa'
+    })
+    result.then(function (response) {
+      console.log(response)
+      return response.json()
+    }).then(function (json) {
+      console.log('parsed json', json)
+    }).catch(function (ex) {
+      console.log('parsing failed', ex)
+    })
+  </script>
+</body>
+</html>
