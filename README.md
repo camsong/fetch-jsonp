@@ -1,7 +1,7 @@
 # Fetch JSONP [![Build Status](https://travis-ci.org/camsong/fetch-jsonp.svg)](https://travis-ci.org/camsong/fetch-jsonp) [![npm version](https://badge.fury.io/js/fetch-jsonp.svg)](http://badge.fury.io/js/fetch-jsonp) [![npm downloads](https://img.shields.io/npm/dm/fetch-jsonp.svg?style=flat-square)](https://www.npmjs.com/package/fetch-jsonp)
 
 JSONP is NOT supported in standard Fetch API, https://fetch.spec.whatwg.org.
-fetch-jsonp provides you same API to fetch JSONP like naive Fetch, also comes
+fetch-jsonp provides you same API to fetch JSONP like native Fetch, also comes
 with global `fetchJsonp` function.
 
 If you need a `fetch` polyfill for old browsers, try [github/fetch](http://github.com/github/fetch).
@@ -24,7 +24,7 @@ require('es6-promise').polyfill();
 
 ## Usage
 
-JSONP only support GET method, as same as `fetch-jsonp`.
+JSONP only supports GET method, same as `fetch-jsonp`.
 
 ### Fetch JSONP in simple way
 
@@ -87,9 +87,9 @@ fetchJsonp('/users.jsonp', {
 ### Difference between `jsonpCallback` and `jsonCallbackFunction`
 There two functions can easily be confused with each other, but there is a clear distinction.
 
-default value are
-* `jsonpCallback`, default value is `callback`. It's the name of callback parameter
-* `jsonCallbackFunction`, default value is `null`. It's the name of the callback function. In order to make it distinct, it's a random string with `jsonp_` prefix like `jsonp_1497658186785_39551`. Leave it blank if it's set be the server, set it explicitly if the callback function name is fixed.
+Default values are
+* `jsonpCallback`, default value is `callback`. It's the name of the callback parameter
+* `jsonCallbackFunction`, default value is `null`. It's the name of the callback function. In order to make it distinct, it's a random string with `jsonp_` prefix like `jsonp_1497658186785_39551`. Leave it blank if it's set by the server, set it explicitly if the callback function name is fixed.
 
 ##### Case 1:
 ```js
@@ -123,7 +123,7 @@ search_results(
 
 #### 2. `Uncaught SyntaxError: Unexpected token :` error
 
-Most probably your are calling a JSON api, which does not support JSONP. The difference is that JSON api respond with an object like `{"data": 123}`, will get above error when being executed as a function. While JSONP will respond with a function wrapped object like `jsonp_123132({data: 123})`.
+More than likely, you are calling a JSON api, which does not support JSONP. The difference is that JSON api responds with an object like `{"data": 123}` and will throw the error above when being executed as a function. On the other hand, JSONP will respond with a function wrapped object like `jsonp_123132({data: 123})`.
 
 ## Browser Support
 
