@@ -67,6 +67,7 @@ function fetchJsonp(_url, options = {}) {
 
       clearFunction(callbackFunction);
       removeScript(scriptId);
+      window[callbackFunction] = () => {};
     }, timeout);
 
     // Caught if got 404/500
