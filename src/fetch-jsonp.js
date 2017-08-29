@@ -64,9 +64,10 @@ function fetchJsonp(_url, options = {}) {
 
     timeoutId = setTimeout(() => {
       reject(new Error(`JSONP request to ${_url} timed out`));
-
-      clearFunction(callbackFunction);
-      removeScript(scriptId);
+      window[callbackFunction] = () => {
+        clearFunction(callbackFunction);
+        removeScript(scriptId);
+      };
     }, timeout);
 
     // Caught if got 404/500
