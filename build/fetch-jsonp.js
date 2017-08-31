@@ -86,7 +86,9 @@
 
         clearFunction(callbackFunction);
         removeScript(scriptId);
-        window[callbackFunction] = function () {};
+        window[callbackFunction] = function () {
+          clearFunction(callbackFunction);
+        };
       }, timeout);
 
       // Caught if got 404/500

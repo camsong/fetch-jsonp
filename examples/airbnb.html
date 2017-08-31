@@ -8,7 +8,7 @@
 <body>
   <script>
     var result = fetchJsonp('http://assets.airbnb.com/frontend/search_results.js', {
-      jsonpCallback: 'aaa'
+      jsonpCallbackFunction: 'search_results'
     })
     result.then(function (response) {
       console.log(response)
