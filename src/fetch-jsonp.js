@@ -25,6 +25,32 @@ function removeScript(scriptId) {
   }
 }
 
+function toQueryPair(key, value) {
+  if (typeof value == 'undefined'){
+      return key;
+  }
+  return key + '=' + encodeURIComponent(value === null ? '' : String(value));
+}
+
+function toQueryString(obj) {
+  let result = [];
+  for(let key in obj){
+      key = encodeURIComponent(key);
+      let values = obj[key];
+      if(values && values.constructor == Array){
+          let queryValues = [];
+          for (let i = 0, len = values.length, value; i < len; i++) {
+              value = values[i];
+              queryValues.push(toQueryPair(key, value));
+          }
+          result = result.concat(queryValues);
+      }else{ 
+          result.push(toQueryPair(key, values));
+      }
+  }
+  return result.join('&');
+}
+
 function fetchJsonp(_url, options = {}) {
   // to avoid param reassign
   let url = _url;
@@ -53,6 +79,23 @@ function fetchJsonp(_url, options = {}) {
 
     // Check if the user set their own params, and if not add a ? to start a list of params
     url += (url.indexOf('?') === -1) ? '?' : '&';
+
+    // add params from option data 
+    const data = options.data;
+    if(data){
+      let queryString;
+      switch (typeof data) {
+        case 'object':
+          queryString = toQueryString(data)
+          break;
+        case 'string':
+          queryString = data
+          break;
+        default:
+          break;
+      }
+      url += queryString + '&';
+    }
 
     const jsonpScript = document.createElement('script');
     jsonpScript.setAttribute('src', `${url}${jsonpCallback}=${callbackFunction}`);
