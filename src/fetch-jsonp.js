@@ -59,6 +59,9 @@ function fetchJsonp(_url, options = {}) {
     if (options.charset) {
       jsonpScript.setAttribute('charset', options.charset);
     }
+    if (options.nonce) {
+      jsonpScript.setAttribute('nonce', options.nonce);
+    }
     jsonpScript.id = scriptId;
     document.getElementsByTagName('head')[0].appendChild(jsonpScript);
 
