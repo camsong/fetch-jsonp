@@ -84,12 +84,12 @@ fetchJsonp('/users.jsonp', {
   })
 ```
 
-### Difference between `jsonpCallback` and `jsonCallbackFunction`
+### Difference between `jsonpCallback` and `jsonpCallbackFunction`
 There two functions can easily be confused with each other, but there is a clear distinction.
 
 Default values are
 * `jsonpCallback`, default value is `callback`. It's the name of the callback parameter
-* `jsonCallbackFunction`, default value is `null`. It's the name of the callback function. In order to make it distinct, it's a random string with `jsonp_` prefix like `jsonp_1497658186785_39551`. Leave it blank if it's set by the server, set it explicitly if the callback function name is fixed.
+* `jsonpCallbackFunction`, default value is `null`. It's the name of the callback function. In order to make it distinct, it's a random string with `jsonp_` prefix like `jsonp_1497658186785_39551`. Leave it blank if it's set by the server, set it explicitly if the callback function name is fixed.
 
 ##### Case 1:
 ```js
