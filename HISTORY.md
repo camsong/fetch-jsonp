@@ -1,3 +1,7 @@
+1.2.0 / 2021-8-16
+==================
+* Add nonce support, thanks to @tanzhangwen #57
+
 1.1.1 / 2017-6-10
 ==================
 * Fix script error when script request error, thanks to @wheatma
