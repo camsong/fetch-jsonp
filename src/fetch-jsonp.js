@@ -62,6 +62,9 @@ function fetchJsonp(_url, options = {}) {
     if (options.nonce) {
       jsonpScript.setAttribute('nonce', options.nonce);
     }
+    if (options.referrerPolicy) {
+      jsonpScript.setAttribute('referrerPolicy', options.referrerPolicy);
+    }
     jsonpScript.id = scriptId;
     document.getElementsByTagName('head')[0].appendChild(jsonpScript);
 
