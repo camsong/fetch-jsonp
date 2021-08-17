@@ -1,3 +1,7 @@
+1.2.1 / 2021-8-17
+==================
+* Add referrerPolicy support, thanks to @kukushouhou #62
+
 1.2.0 / 2021-8-16
 ==================
 * Add nonce support, thanks to @tanzhangwen #57
