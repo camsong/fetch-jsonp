@@ -1,13 +1,13 @@
 {
   "name": "fetch-jsonp",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Fetch JSONP like a boss using Fetch API",
   "main": "build/fetch-jsonp.js",
   "scripts": {
     "prepublish": "npm run lint && npm run clean && npm run build",
     "build": "babel src/ --modules umd --out-dir build",
     "clean": "rm -rf build",
-    "lint": "eslint src/ test/"
+    "lint": "eslint src/"
   },
   "keywords": [
     "fetch",
