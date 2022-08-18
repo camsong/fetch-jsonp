@@ -5,6 +5,8 @@ declare namespace fetchJsonp {
     timeout?: number;
     jsonpCallback?: string;
     jsonpCallbackFunction?: string;
+    nonce: string;
+    referrerPolicy: ReferrerPolicy;
   }
 
   interface Response {
