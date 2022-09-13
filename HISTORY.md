@@ -1,3 +1,7 @@
+1.2.3 / 2022-9-13
+==================
+* Set values of options to be optional, thanks to @timothy-bailey-redbox
+
 1.2.1 / 2021-8-17
 ==================
 * Add referrerPolicy support, thanks to @kukushouhou #62
