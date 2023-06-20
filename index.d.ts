@@ -6,6 +6,7 @@ declare namespace fetchJsonp {
     jsonpCallback?: string;
     jsonpCallbackFunction?: string;
     nonce?: string;
+    crossorigin?: boolean;
     referrerPolicy?: ReferrerPolicy;
     charset?: string;
   }
