@@ -1,3 +1,7 @@
+1.3.0 / 2023-7-6
+==================
+* allow applications to set crossorigin attribute, thanks to @stfsy
+
 1.2.3 / 2022-9-13
 ==================
 * Set values of options to be optional, thanks to @timothy-bailey-redbox
