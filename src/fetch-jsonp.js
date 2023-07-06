@@ -65,6 +65,9 @@ function fetchJsonp(_url, options = {}) {
     if (options.referrerPolicy) {
       jsonpScript.setAttribute('referrerPolicy', options.referrerPolicy);
     }
+    if (options.crossorigin) {
+      jsonpScript.setAttribute('crossorigin', 'true');
+    }
     jsonpScript.id = scriptId;
     document.getElementsByTagName('head')[0].appendChild(jsonpScript);
 
