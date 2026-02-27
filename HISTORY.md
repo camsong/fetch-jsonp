@@ -1,3 +1,9 @@
+1.4.0 / 2026-2-27
+==================
+* fix: crossorigin attribute now correctly defaults to 'anonymous' instead of 'true'; also accepts string values like 'use-credentials'
+* feat: add fetchPriority option support ('high' | 'low' | 'auto'), thanks to @trudbot #73
+* chore: add types field to package.json for correct npm TS badge, thanks to @karlhorky #71
+
 1.3.0 / 2023-7-6
 ==================
 * allow applications to set crossorigin attribute, thanks to @stfsy

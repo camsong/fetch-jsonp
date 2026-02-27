@@ -1,8 +1,9 @@
 {
   "name": "fetch-jsonp",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Fetch JSONP like a boss using Fetch API",
-  "main": "build/fetch-jsonp.js",
+  "main": "./build/fetch-jsonp.js",
+  "types": "./index.d.ts",
   "scripts": {
     "prepublish": "npm run lint && npm run clean && npm run build",
     "build": "babel src/ --modules umd --out-dir build",

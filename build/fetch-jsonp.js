@@ -85,7 +85,11 @@
         jsonpScript.setAttribute('referrerPolicy', options.referrerPolicy);
       }
       if (options.crossorigin) {
-        jsonpScript.setAttribute('crossorigin', 'true');
+        jsonpScript.setAttribute('crossorigin', typeof options.crossorigin === 'string' ? options.crossorigin : 'anonymous');
+      }
+      var fp = options.fetchPriority;
+      if (fp === 'high' || fp === 'low' || fp === 'auto') {
+        jsonpScript.setAttribute('fetchPriority', fp);
       }
       jsonpScript.id = scriptId;
       document.getElementsByTagName('head')[0].appendChild(jsonpScript);

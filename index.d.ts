@@ -6,9 +6,10 @@ declare namespace fetchJsonp {
     jsonpCallback?: string;
     jsonpCallbackFunction?: string;
     nonce?: string;
-    crossorigin?: boolean;
+    crossorigin?: boolean | string;
     referrerPolicy?: ReferrerPolicy;
     charset?: string;
+    fetchPriority?: 'high' | 'low' | 'auto';
   }
 
   interface Response {

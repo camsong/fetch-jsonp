@@ -117,6 +117,32 @@ search_results(
 )
 ```
 
+### Set fetchPriority for the JSONP script request
+
+```javascript
+fetchJsonp('/users.jsonp', {
+    fetchPriority: 'high', // 'high' | 'low' | 'auto'
+  })
+  .then(function(response) {
+    return response.json()
+  }).then(function(json) {
+    console.log('parsed json', json)
+  })
+```
+
+### Set crossorigin attribute
+
+```javascript
+fetchJsonp('/users.jsonp', {
+    crossorigin: 'anonymous', // 'anonymous' | 'use-credentials' | true (defaults to 'anonymous')
+  })
+  .then(function(response) {
+    return response.json()
+  }).then(function(json) {
+    console.log('parsed json', json)
+  })
+```
+
 ### Caveats
 
 #### 1. You need to call `.then(function(response) { return response.json(); })` in order to keep consistent with Fetch API.
