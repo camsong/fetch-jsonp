@@ -91,10 +91,6 @@
       if (fp === 'high' || fp === 'low' || fp === 'auto') {
         jsonpScript.setAttribute('fetchPriority', fp);
       }
-      var fp = options.fetchPriority;
-      if (fp === 'high' || fp === 'low' || fp === 'auto') {
-        jsonpScript.setAttribute('fetchPriority', fp);
-      }
       jsonpScript.id = scriptId;
       document.getElementsByTagName('head')[0].appendChild(jsonpScript);
 
