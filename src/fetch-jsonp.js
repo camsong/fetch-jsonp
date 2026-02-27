@@ -72,6 +72,10 @@ function fetchJsonp(_url, options = {}) {
     if (fp === 'high' || fp === 'low' || fp === 'auto') {
       jsonpScript.setAttribute('fetchPriority', fp);
     }
+    const fp = options.fetchPriority;
+    if (fp === 'high' || fp === 'low' || fp === 'auto') {
+      jsonpScript.setAttribute('fetchPriority', fp);
+    }
     jsonpScript.id = scriptId;
     document.getElementsByTagName('head')[0].appendChild(jsonpScript);
 
